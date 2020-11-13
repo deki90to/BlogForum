@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block body %}
+
+
+{% if post %}
+<br><br>
+<ul>
+<li><b>{{ post.author }}</b></li>
+		{{ post.body|safe }}
+		<br>
+		<br>
+		<a href="{% url 'home' %}"> Back </a> |
+		<a href="{% url 'delete' post.pk %}"> Delete </a>
+</ul>
+
+{% endif %}
+
+
+{% endblock %}
