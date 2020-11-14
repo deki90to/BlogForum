@@ -9,17 +9,18 @@
 <ul>
 	<br>
 	<h1><a class="btn btn-outline-primary" href="{% url 'add' %}">Add Post</a></h1>
-<br>
+	<br>
 
 	{% for post in object_list %}
 
 	<ul>
 	<li><b>{{ post.author }}</b></li>
-		{{ post.body|slice:":100"|safe }}
-		<a href="{% url 'details' post.pk %}"> ...more </a>
-	</ul>
+	{{ post.body|slice:"200"|safe }}
 
+	<a href="{% url 'details' post.pk %}"> ...more </a>
+	</ul>
 	{% endfor %}
+
 </ul>
 
 {% endif %}

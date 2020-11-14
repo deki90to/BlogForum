@@ -2,7 +2,7 @@
 
 
 {% block body %}
-
+<br>
 <h1>Add Post</h1>
 
 <div class="form-group">
@@ -11,12 +11,15 @@
 	{{ form.as_p }}
 	{{ form.media }}
 
-	<button class="btn-btn-primary"> Post </button>
-	<a href="{% url 'home' %}"> Cancel </a>
-
+	<button class='btn btn-outline-primary btn-sm'> Post </button>
+	<a href="{% url 'home' %}" class='btn btn-outline-primary btn-sm'> Cancel </a>
 
 </form>
 </div>
 
+<script>
+	var name = '{{ user.id }}';
+	document.getElementById('admin').value = name;
+</script>
 
 {% endblock %}
