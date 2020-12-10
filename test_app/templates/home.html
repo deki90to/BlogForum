@@ -1,29 +1,25 @@
 {% extends 'base.html' %}
 
 
+
+
 {% block body %}
-
-
 
 {% if user.is_authenticated %}
 <ul>
-	<br>
-	<h1><a class="btn btn-outline-primary" href="{% url 'add' %}">Add Post</a></h1>
-	<br>
+<br>
+    <h1><a class="btn btn-outline-primary" href="{% url 'add' %}">Add Post</a></h1>
+<br>
 
-	{% for post in object_list %}
-
-	<ul>
-	<li><b>{{ post.author }}</b></li>
-	{{ post.body|slice:"200"|safe }}
-
-	<a href="{% url 'details' post.pk %}"> ...more </a>
-	</ul>
-	{% endfor %}
-
+{% for post in object_list %}
+    <ul>
+    <li><b>{{ post.author }}</b></li>
+        {{ post.body|slice:"200"|safe }}
+        <a href="{% url 'details' post.pk %}"> ...details </a>
+    </ul>
+{% endfor %}
 </ul>
 
 {% endif %}
-
 
 {% endblock %}

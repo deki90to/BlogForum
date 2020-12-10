@@ -7,7 +7,6 @@ from . forms import PostForm
 # Create your views here.
 
 
-
 class home(ListView):
 	model = Post
 	template_name = 'home.html'
