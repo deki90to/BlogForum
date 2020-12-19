@@ -16,6 +16,12 @@
     <li><b>{{ post.author }}</b></li>
         {{ post.body|slice:"200"|safe }}
         <a href="{% url 'details' post.pk %}"> ...details </a>
+        <br>
+
+    {% if post.image %}
+        <img src="{{ post.image.url }}">
+    {% endif %}
+
     </ul>
 {% endfor %}
 </ul>

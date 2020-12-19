@@ -1,5 +1,6 @@
 from django.urls import path
 from . views import home, add, details, delete
+from . import views
 
 
 urlpatterns = [
