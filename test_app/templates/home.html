@@ -11,7 +11,7 @@
 {% for post in object_list %}
     <ul>
     <li><b>{{ post.author }}</b></li>
-        {{ post.body|slice:"200"|safe }}...
+            {{ post.body|slice:"200"|safe }}...
 
         {% if post.image %}
             <br>
@@ -23,7 +23,7 @@
             <video width='480' height= '320' id="intro" type="video/mp4" controls preload>
 	        <source src="{{ post.video.url }}" type="video/mp4">
             </video>
-        {% endif %} 
+        {% endif %}
 
         <br>
         <a href="{% url 'details' post.pk %}"> see post </a>
