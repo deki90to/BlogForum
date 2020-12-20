@@ -9,5 +9,5 @@ class PostForm(forms.ModelForm):
 
 		widgets = {
 			'author':forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'admin', 'type':'hidden'}),
-			'body':forms.Textarea(attrs={'class': 'form-control', 'placeholder':'Type comment', 'rows':3, 'cols':10}),
+			'body':forms.Textarea(attrs={'class': 'form-control', 'placeholder':'Type comment', 'rows':1, 'cols':10}),
 		}

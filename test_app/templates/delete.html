@@ -2,19 +2,37 @@
 
 
 {% block body %}
-
-
-<br><br>
+    <br>
 <ul>
-<h1>Delete Post</h1>
+<h3> Confirm Deleting </h3>
 <br>
-<div class="form-group">
-<form method="POST">
-	{% csrf_token %}
-    <a href="{% url 'details' post.pk %}" class='btn btn-outline-primary btn-sm'> Cancel </a>
-	<button class="btn btn-outline-danger btn-sm"> DELETE </button>
-</form>
-</div>
+    <div class="form-group">
+    <form method="POST">
+        {% csrf_token %}
+        <ul>
+        <li>
+            <b>{{ post.author }}</b>
+        </li>
+                {{ post.body|safe }}
+
+                {% if post.image %}
+                    <br>
+                    <img src="{{ post.image.url }}">
+                {% endif %}
+
+                {% if post.video %}
+                    <br>
+                    <video width='480' height= '320' id="intro" type="video/mp4" controls preload>
+                    <source src="{{ post.video.url }}" type="video/mp4">
+                    </video>
+                {% endif %}
+            <br>
+            <br>
+                <a href="{% url 'details' post.pk %}" class='btn btn-outline-primary btn-sm'> Cancel </a>
+        <button class="btn btn-outline-danger btn-sm"> Delete </button>
+        </ul>
+    </form>
+    </div>
 </ul>
 
 
