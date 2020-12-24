@@ -10,8 +10,8 @@
 
 {% for post in object_list %}
     <ul>
-    <li><b>{{ post.author }}</b> <h6>{{ post.date }}</h6></li>
-            {{ post.body|slice:"200"|safe }}...
+    <li><b>{{ post.author }}</b> <small><h6>{{ post.date }}</small></h6></li>
+            <small><b>{{ post.body|slice:"200"|safe }}...</b></small>
 
         {% if post.image %}
             <br>
@@ -26,13 +26,18 @@
         {% endif %}
 
         <br>
-        <a href="{% url 'details' post.pk %}"> | See Post </a> |
+        <small>
+           > <a href="{% url 'details' post.pk %}"> Details </a>
 
         {% if request.user == post.author %}
-            <a href="{% url 'delete' post.pk %}"> Delete Post |</a>
+            - <a href="{% url 'update' post.pk %}"> Edit Post </a> -
+            <a href="{% url 'delete' post.pk %}"> Delete Post </a> 
         {% endif %}
+        </small>
     </ul>
     <br>
+        
+
 {% endfor %}
 </ul>
 

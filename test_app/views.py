@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, DetailView, DeleteView
+from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from . models import Post
@@ -24,4 +24,10 @@ class details(DetailView):
 class delete(DeleteView):
 	model = Post
 	template_name = 'delete.html'
+	success_url = reverse_lazy('home')
+
+class update(UpdateView):
+	model = Post
+	form_class = PostForm
+	template_name = 'update.html'
 	success_url = reverse_lazy('home')
