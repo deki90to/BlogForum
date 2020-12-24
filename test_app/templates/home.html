@@ -5,13 +5,13 @@
 {% if user.is_authenticated %}
 <ul>
 <br>
-    <h1><a class="btn btn-outline-primary" href="{% url 'add' %}">Add Post</a></h1>
+    <h1><a class="btn btn-outline-primary" href="{% url 'add' %}"> New Post </a></h1>
 <br>
 
 {% for post in object_list %}
     <ul>
     <li><b>{{ post.author }}</b> <small><h6>{{ post.date }}</small></h6></li>
-            <small><b>{{ post.body|slice:"200"|safe }}...</b></small>
+            <b>{{ post.body|slice:"300"|safe }}</b>
 
         {% if post.image %}
             <br>
@@ -26,14 +26,19 @@
         {% endif %}
 
         <br>
-        <small>
-           > <a href="{% url 'details' post.pk %}"> Details </a>
+    <small>
+           <a href="{% url 'details' post.pk %}"> Details </a>
+        <!-- <a href="{% url 'details' post.pk %}" class='btn btn-outline-primary btn-sm'> Details </a> -->
+           
 
         {% if request.user == post.author %}
             - <a href="{% url 'update' post.pk %}"> Edit Post </a> -
             <a href="{% url 'delete' post.pk %}"> Delete Post </a> 
+
+            <!-- <a href="{% url 'update' post.pk %}" class='btn btn-outline-primary btn-sm'> Edit </a> -->
+            <!-- <a href="{% url 'delete' post.pk %}" class='btn btn-outline-danger btn-sm'> Delete </a> -->
         {% endif %}
-        </small>
+    </small>
     </ul>
     <br>
         

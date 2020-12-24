@@ -10,9 +10,9 @@
 	{% csrf_token %}
 	{{ form.media }}
     {{ form.as_p }}
-    <br>
-    <button class='btn btn-outline-primary btn-sm'> Post </button>
+	<br>
 	<a href="{% url 'home' %}" class='btn btn-outline-primary btn-sm'> Cancel </a>
+    <button class='btn btn-outline-primary btn-sm'> Post </button>
 </form>
 </div>
 

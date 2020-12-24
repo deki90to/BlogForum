@@ -31,6 +31,7 @@
             <a href="{% url 'home' %}" class='btn btn-outline-primary btn-sm'> Back </a>
 
             {% if request.user == post.author %}
+                <a href="{% url 'update' post.pk %}" class='btn btn-outline-primary btn-sm'> Edit </a>
                 <a href="{% url 'delete' post.pk %}" class='btn btn-outline-danger btn-sm'> Delete </a>
             {% endif %}
     </ul>
