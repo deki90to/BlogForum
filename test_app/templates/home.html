@@ -10,7 +10,7 @@
 
 {% for post in object_list %}
     <ul>
-    <li><b>{{ post.author }}</b></li>
+    <li><b>{{ post.author }}</b> <h6>{{ post.date }}</h6></li>
             {{ post.body|slice:"200"|safe }}...
 
         {% if post.image %}
@@ -26,7 +26,11 @@
         {% endif %}
 
         <br>
-        <a href="{% url 'details' post.pk %}"> see post </a>
+        <a href="{% url 'details' post.pk %}"> | See Post </a> |
+
+        {% if request.user == post.author %}
+            <a href="{% url 'delete' post.pk %}"> Delete Post |</a>
+        {% endif %}
     </ul>
     <br>
 {% endfor %}
