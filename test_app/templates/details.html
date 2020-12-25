@@ -1,41 +1,55 @@
 {% extends 'base.html' %}
-
-
-
-
 {% block body %}
 
 
 {% if post %}
+<br>
+<br>
+<ul>
+<li><b>{{ post.author }}</b></li>
+    {{ post.body|safe }}
+
+    {% if post.image %}
+        <br>
+        <img src="{{ post.image.url }}">
+    {% endif %}
+
+    {% if post.video %}
+        <br>
+        <video width='480' height= '320' id="intro" type="video/mp4" controls preload>
+        <source src="{{ post.video.url }}" type="video/mp4">
+        </video>
+    {% endif %}
+
     <br>
     <br>
+    <a href="{% url 'home' %}" class='btn btn-outline-primary btn-sm'> Back </a>
 
-    <ul>
-    <li><b>{{ post.author }}</b></li>
-            {{ post.body|safe }}
+    {% if request.user == post.author %}
+        <a href="{% url 'update' post.pk %}" class='btn btn-outline-primary btn-sm'> Edit </a>
+        <a href="{% url 'delete' post.pk %}" class='btn btn-outline-danger btn-sm'> Delete </a>
+    {% endif %}
 
-            {% if post.image %}
-                <br>
-                <img src="{{ post.image.url }}">
-            {% endif %}
-
-            {% if post.video %}
-                <br>
-                <video width='480' height= '320' id="intro" type="video/mp4" controls preload>
-                <source src="{{ post.video.url }}" type="video/mp4">
-                </video>
-            {% endif %}
-
+    <br>
+    <br>
+    <h4>Comments</h4>
+    <hr>
+    {% if not post.comments.all %}
+        No Comments
         <br>
         <br>
-            <a href="{% url 'home' %}" class='btn btn-outline-primary btn-sm'> Back </a>
+        <h3><a href="">Add new Comment</a></h3>
+    {% else %}
+        {% for comment in post.comments.all %}
+            <small><strong>
+        {{ comment.name }}</strong> / {{ comment.date }}
+           </small>
+        <br>
+        <small>{{ comment.body }}</small>
+            <hr>
+        {% endfor %}
+    {% endif %}
 
-            {% if request.user == post.author %}
-                <a href="{% url 'update' post.pk %}" class='btn btn-outline-primary btn-sm'> Edit </a>
-                <a href="{% url 'delete' post.pk %}" class='btn btn-outline-danger btn-sm'> Delete </a>
-            {% endif %}
-    </ul>
+</ul>
 {% endif %}
-
-
 {% endblock %}
