@@ -9,37 +9,34 @@
 <br>
 
 {% for post in object_list %}
-    <ul>
-    <li><b>{{ post.author }}</b> <small>{{ post.date }}</small></li>
-        {{ post.body|slice:"300"|safe }}
+<ul>
+<li><b>{{ post.author }}</b> <small>{{ post.date }}</small></li>
+    {{ post.body|slice:"300"|safe }}
 
-    {% if post.image %}
-        <br>
-        <img src="{{ post.image.url }}">
-    {% endif %}
+{% if post.image %}
+    <br>
+    <img src="{{ post.image.url }}">
+{% endif %}
 
-    {% if post.video %}
-        <br>
-        <video width='480' height= '320' id="intro" type="video/mp4" controls preload>
-        <source src="{{ post.video.url }}" type="video/mp4">
-        </video>
-    {% endif %}
+{% if post.video %}
+    <br>
+    <video width='480' height= '320' id="intro" type="video/mp4" controls preload>
+    <source src="{{ post.video.url }}" type="video/mp4">
+    </video>
+{% endif %}
 
-        <br>
-    <small>
-       <a href="{% url 'details' post.pk %}"> Details </a>
-    <!-- <a href="{% url 'details' post.pk %}" class='btn btn-outline-primary btn-sm'> Details </a> -->
+    <br>
+<small>
+   <a href="{% url 'details' post.pk %}"> Details </a>
 
-    {% if request.user == post.author %}
-        - <a href="{% url 'update' post.pk %}"> Edit Post </a> -
-        <a href="{% url 'delete' post.pk %}"> Delete Post </a>
+{% if request.user == post.author %}
+    - <a href="{% url 'update' post.pk %}"> Edit </a> -
+    <a href="{% url 'delete' post.pk %}"> Delete </a>
 
-        <!-- <a href="{% url 'update' post.pk %}" class='btn btn-outline-primary btn-sm'> Edit </a> -->
-        <!-- <a href="{% url 'delete' post.pk %}" class='btn btn-outline-danger btn-sm'> Delete </a> -->
-    {% endif %}
-    </small>
-    </ul>
-    <hr>
+{% endif %}
+</small>
+</ul>
+<hr>
 
 
 {% endfor %}
