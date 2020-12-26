@@ -9,9 +9,8 @@ class PostForm(forms.ModelForm):
 
 		widgets = {
 			'author':forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'admin', 'type':'hidden'}),
-			'body':forms.Textarea(attrs={'class': 'form-control', 'placeholder':'Type comment', 'rows': 1, 'cols': 10}),
+			'body':forms.Textarea(attrs={'class': 'form-control', 'placeholder':'Type comment', 'rows':1, 'cols':10}),
 		}
-
 
 class CommentForm(forms.ModelForm):
 	class Meta:
@@ -19,6 +18,8 @@ class CommentForm(forms.ModelForm):
 		fields = ('name', 'body')
 
 		widgets = {
-			'name': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'admin', 'type':'hidden'}),
+			# 'name': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'admin', 'type':'hidden'}),
+
+			'name': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'body'}),
 			'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Post Commenting...', 'rows': 1, 'cols': 10})
 		}

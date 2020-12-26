@@ -33,14 +33,11 @@
     <br>
     <br>
     <h4>Comments</h4>
-    <br>
-        <a href="{% url 'comment' post.pk %}" class="btn btn-primary"> New Comment </a>
     <hr>
+
+        <h3><a href="{% url 'comment' post.pk %}">Add new Comment</a></h3>
     {% if not post.comments.all %}
         No Comments
-        <br>
-        <br>
-{#        <h3><a href="{% url 'comments' post.pk %}">Add new Comment</a></h3>#}
     {% else %}
         {% for comment in post.comments.all %}
             <small><strong>

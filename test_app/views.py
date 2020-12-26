@@ -4,7 +4,7 @@ from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from . models import Post, Comment
 from . forms import PostForm, CommentForm
-
+# Create your views here.
 
 class home(ListView):
 	model = Post
