@@ -6,6 +6,7 @@ from . models import Post, Comment
 from . forms import PostForm, CommentForm
 # Create your views here.
 
+
 class home(ListView):
 	model = Post
 	template_name = 'home.html'
@@ -32,8 +33,13 @@ class update(UpdateView):
 	template_name = 'update.html'
 	success_url = reverse_lazy('home')
 
-class comment(CreateView):
+class add_comment(CreateView):
 	model = Comment
 	form_class = CommentForm
-	template_name = 'comments.html'
+	template_name = 'add_comment.html'
 	success_url = reverse_lazy('home')
+	ordering = ['-id']
+
+	def form_valid(self, form):
+		form.instance.post_id = self.kwargs['pk']
+		return super().form_valid(form)

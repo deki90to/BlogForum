@@ -9,18 +9,24 @@
 <li><b>{{ post.author }}</b></li>
     {{ post.body|safe }}
 
-    {% if post.image %}
-        <br>
-        <img src="{{ post.image.url }}">
-    {% endif %}
+
+
+{% if post.image %}
+    <br>
+    <img src="{{ post.image.url }}">
+{% endif %}
+
+
 
     {% if post.video %}
         <br>
         <video width='480' height= '320' id="intro" type="video/mp4" controls preload>
         <source src="{{ post.video.url }}" type="video/mp4">
         </video>
-    {% endif %}
 
+
+
+    {% endif %}
     <br>
     <br>
     <a href="{% url 'home' %}" class='btn btn-outline-primary btn-sm'> Back </a>
@@ -29,26 +35,28 @@
         <a href="{% url 'update' post.pk %}" class='btn btn-outline-primary btn-sm'> Edit </a>
         <a href="{% url 'delete' post.pk %}" class='btn btn-outline-danger btn-sm'> Delete </a>
     {% endif %}
+<br>
+<br>
+    <br>
 
-    <br>
-    <br>
-    <h4>Comments</h4>
+    <h3> <a href="{% url 'add_comment' post.pk %}"> Add new comment </a> </h3>
     <hr>
+<h5> Comments </h5>
+    <br>
 
-        <h3><a href="{% url 'comment' post.pk %}">Add new Comment</a></h3>
     {% if not post.comments.all %}
         No Comments
     {% else %}
         {% for comment in post.comments.all %}
-            <small><strong>
-        {{ comment.name }}</strong> / {{ comment.date }}
-           </small>
-        <br>
-        <small>{{ comment.body }}</small>
+            <b>{{ comment.name }}, {{ comment.date }}</b>
+            <br>
+            {{ comment.body }}
             <hr>
         {% endfor %}
     {% endif %}
 
 </ul>
-{% endif %}
+    {% endif %}
+
+
 {% endblock %}

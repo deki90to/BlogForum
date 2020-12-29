@@ -18,8 +18,8 @@ class CommentForm(forms.ModelForm):
 		fields = ('name', 'body')
 
 		widgets = {
-			# 'name': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'admin', 'type':'hidden'}),
-
-			'name': forms.TextInput(attrs={'class': 'form-control', 'value': '', 'id': 'body'}),
-			'body': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Post Commenting...', 'rows': 1, 'cols': 10})
+			'name': forms.TextInput(attrs={'class': 'form-control'}),
+			'body': forms.Textarea(attrs={'class': 'form-control'}),
 		}
+
+
