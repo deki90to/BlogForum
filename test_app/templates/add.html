@@ -2,6 +2,7 @@
 
 
 {% block body %}
+{% if user.is_authenticated %}
 <br>
 <h1>Add Post</h1>
 
@@ -15,10 +16,11 @@
     <button class='btn btn-outline-primary btn-sm'> Post </button>
 </form>
 </div>
-
 <script>
 	var name = '{{ user.id }}';
 	document.getElementById('admin').value = name;
 </script>
-
+{% else %}
+	<a href="{% url 'register' %}"> Register </a> or <a href="{% url 'login' %}"> Login </a> to see the content.
+{% endif %}
 {% endblock %}

@@ -28,4 +28,4 @@ class Comment(models.Model):
 		ordering = ['-date']
 
 	def __str__(self):
-		return '%s - %s' % (self.name, self.post.body)
+		return '%s - %s' % (self.name, self.body)

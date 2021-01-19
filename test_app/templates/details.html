@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-{% block body %}
 
+{% block body %}
+{% if user.is_authenticated %}
 
 {% if post %}
 <br>
@@ -57,6 +58,7 @@
 
 </ul>
     {% endif %}
-
-
+{% else %}
+    <a href="{% url 'register' %}"> Register </a> or <a href="{% url 'login' %}"> Login </a> to see the content.
+{% endif %}
 {% endblock %}

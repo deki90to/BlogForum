@@ -2,7 +2,9 @@
 
 
 {% block body %}
+{% if user.is_authenticated %}
     <br>
+}
 <ul>
 <h3> Confirm Deleting </h3>
 <br>
@@ -34,6 +36,8 @@
     </form>
     </div>
 </ul>
-
+{% else %}
+    <a href="{% url 'register' %}"> Register </a> or <a href="{% url 'login' %}"> Login </a> to see the content.
+{% endif %}
 
 {% endblock %}
